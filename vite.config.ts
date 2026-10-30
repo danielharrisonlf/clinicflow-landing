@@ -21,7 +21,7 @@ function preloadFonts(): Plugin {
         return files.map((file) => ({
           tag: 'link',
           attrs: { rel: 'preload', href: `/${file}`, as: 'font', type: 'font/woff2', crossorigin: '' },
-          injectTo: 'head-prepend' as const,
+          injectTo: 'head' as const,
         }))
       },
     },
