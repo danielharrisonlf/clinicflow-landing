@@ -12,11 +12,16 @@ import {
 const NBSP = ' '
 
 describe('calcularRoi', () => {
-  it('aplica a fórmula do brief com os valores padrão (4 médicos, R$ 280)', () => {
+  it('aplica a fórmula do brief com os valores padrão (2 médicos, R$ 280)', () => {
     const r = calcularRoi(MEDICOS.padrao, VALOR_CONSULTA.padrao)
-    expect(r.consultasMes).toBe(4 * 12 * 22)
-    expect(r.perdidoMes).toBeCloseTo(1056 * 0.2 * 280)
-    expect(r.recuperadoMes).toBeCloseTo(59136 * 0.8)
+    expect(r.consultasMes).toBe(2 * 12 * 22)
+    expect(r.perdidoMes).toBeCloseTo(528 * 0.2 * 280)
+    expect(r.recuperadoMes).toBeCloseTo(29568 * 0.8)
+  })
+
+  it('o recuperado com os padrões fica abaixo do teto prometido no H1 (R$ 25.000)', () => {
+    const r = calcularRoi(MEDICOS.padrao, VALOR_CONSULTA.padrao)
+    expect(r.recuperadoMes).toBeLessThanOrEqual(25_000)
   })
 
   it('recuperado é sempre 80% do perdido', () => {

@@ -11,7 +11,9 @@ export const DIAS_UTEIS = 22
 export const TAXA_FALTAS = 0.2
 export const TAXA_RECUPERACAO = 0.8
 
-export const MEDICOS = { min: 1, max: 20, step: 1, padrao: 4 } as const
+// padrao 2: com R$ 280, o recuperado (~R$ 23.650) fica coerente com o teto
+// prometido no H1 ("até R$ 25.000/mês").
+export const MEDICOS = { min: 1, max: 20, step: 1, padrao: 2 } as const
 export const VALOR_CONSULTA = { min: 100, max: 1000, step: 10, padrao: 280 } as const
 
 type Limites = { min: number; max: number; step: number }
